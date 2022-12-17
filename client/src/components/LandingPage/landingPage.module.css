@@ -1,0 +1,35 @@
+  body {
+    background-image: url("https://www.assegur.com/totmagazine/wp-content/uploads/2019/04/los-20-paises-mas-seguros-del-mundo-para-viajar.jpg");
+    background-size: 100%;
+  } 
+  
+  .land {
+    font-size: 60px;
+    color: black;
+    margin-bottom: 100px;
+  }
+  .link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  .button {
+    border-radius: 30px;
+    height: 40px;
+    background-color: rgb(238, 241, 245);
+    shape-outside: none;
+    margin-top: 50px;
+  }
+  
+  .button:hover {
+    background-color: rgba(230, 169, 77, 0);
+    transition: 300ms;
+  }
+  
+  .link:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+  }
+  .divi {
+    margin-top: 100px;
+  }
