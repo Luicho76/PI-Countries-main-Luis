@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import {getCountries, filterByContinent, orderByName, filterByPopulation} from '../../actions/index';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
+import SearchBar from '../SearchBar/SearchBar';
+
 
 export default function Home(){
 
@@ -97,14 +99,17 @@ export default function Home(){
             allCountries = { allCountries.length }
             paginated = { paginated }
             /> 
+            <SearchBar/>
+            <br/>
+
             {
                 currentCountries?.map(c => {
                     return(
-                        <fragment>
+                        <div>
                             <Link to={"/home/" + c.id}>
                                 <Card key = { c.id } name={c.name} flags={c.flags} continents={c.continents}/>
                             </Link>
-                        </fragment>
+                        </div>
                     )
                 })
             }

@@ -1,4 +1,4 @@
-import { FILTER_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME } from "../actions/actionNames";
+import { FILTER_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_NAME_COUNTRIES, POST_ACTIVITY, GET_ACTIVITIES } from "../actions/actionNames";
 
 const initialState = {
     countries: [],
@@ -48,7 +48,7 @@ function rootReducer(state = initialState, action){
                 countries: sortedArr
             }
 
-        case 'FILTER_BY_POPULATION':
+        case FILTER_BY_POPULATION:
             const filterPopulation = action.payload === 'ascpop' ?
             state.countries.sort(function(a, b) {
                 if(a.population > b.population) {
@@ -71,6 +71,23 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 countries: filterPopulation
+            }
+
+        case GET_NAME_COUNTRIES:
+            return {
+                ...state,
+                countries: action.payload
+            }
+
+        case POST_ACTIVITY:
+            return {
+                ...state,
+            }
+
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                activities: action.payload
             }
 
         default:

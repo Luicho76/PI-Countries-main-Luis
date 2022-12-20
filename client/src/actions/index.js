@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION} from './actionNames'
+import {GET_COUNTRIES, GET_NAME_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_ACTIVITIES, POST_ACTIVITY } from './actionNames'
 
 export function getCountries(){
     return async (dispatch) => {
@@ -8,6 +8,20 @@ export function getCountries(){
             type: GET_COUNTRIES, 
             payload: res.data
         });
+    }
+}
+
+export function getNameCountries(name){
+    return async function(dispatch) {
+    try {
+        var country = await axios.get('http://localhost:3001/api/countries?name=' + name);
+        return dispatch ({
+            type: GET_NAME_COUNTRIES,
+            payload: country.data
+        })
+    } catch (error) {
+        console.log(error);
+        }
     }
 }
 
@@ -30,5 +44,26 @@ export function filterByPopulation(payload) {
     return {
         type: FILTER_BY_POPULATION,
         payload
+    }
+}
+
+export function getActivities() {
+    return async function (dispatch) {
+        var info = await axios.get('http://localhost:3001/api/activities')
+        return dispatch({
+            type: GET_ACTIVITIES,
+            payload: info.data
+        })
+    };
+}
+
+export function postActivity(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('http://localhost:3001/api/activities', payload)
+        console.log(response)
+        return {
+            type: POST_ACTIVITY,
+            response
+        }
     }
 }
