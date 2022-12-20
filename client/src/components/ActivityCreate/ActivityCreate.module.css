@@ -1,5 +1,5 @@
 .container {
-    width: 95vw; 
+    width: 80vw; 
     height: auto; 
     margin: 0 auto;
     padding: 16px;
@@ -41,7 +41,7 @@
     box-shadow: 0px 0px 4px grey;
     color:rgb(6, 6, 41);
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(159, 173, 192);
+    background-color: rgba(101, 156, 233, 0.712);
 }
 
 .errors {
@@ -83,9 +83,6 @@
     grid-template-rows: 50px 50px;
 }
 
-.country {
-
-}
 
 .deleteButton {
     float:left

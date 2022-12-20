@@ -92,13 +92,13 @@ export function ActivityCreate(){
             <div>
                 <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
                     <div className={s.select}>
-                        <label>Nombre de la actividad</label>
+                        <label>Nombre de la actividad: </label>
                         <input
                         type= 'text'
                         value= {input.name}
                         name = 'name'
                         autoComplete='off'
-                        placeholder='Ingresar el nombre de la actividad'
+                        placeholder='Ingrese nombre de la actividad'
                         onChange={(e) => handleChange(e)}
                         />
                         {errors.name && (
@@ -106,7 +106,7 @@ export function ActivityCreate(){
                         )}
                     </div>
                     <div className={s.select}>
-                        <label>Dificultad</label>
+                        <label>Dificultad: </label>
                         <select
                         name='difficulty' 
                         value={input.difficulty} 
@@ -124,14 +124,14 @@ export function ActivityCreate(){
                         </select>
                     </div>
                     <div className={s.select}>
-                        <label>Duración:</label>
+                        <label>Duración: </label>
                         <input
                             type= 'number'
                             value= {input.duration}
                             name = 'duration'
                             autocomplete='off'
                             min='0'
-                            placeholder='Ingresar tiempo de duración'
+                            placeholder='Ingresar dato de duración'
                             onChange={(e) => handleChange(e)}
                         />
                         {errors.duration && (
@@ -139,23 +139,23 @@ export function ActivityCreate(){
                         )}
                     </div>
                     <div className={s.select}>
-                    <label>Estación:</label>
+                    <label>Estación: </label>
                         <select 
                             name='season' 
                             value={input.season} 
                             onChange={(e) => handleChange(e)}>
                                 <option value=''>Selecciona la estación</option>
-                                <option value='Summer'>Summer</option>
-                                <option value='Autumn'>Autumn</option>
-                                <option value='Winter'>Winter</option>
-                                <option value='Spring'>Spring</option>
+                                <option value='Summer'>Verano (Summer)</option>
+                                <option value='Autumn'>Otoño (Autumn)</option>
+                                <option value='Winter'>Invierno (Winter)</option>
+                                <option value='Spring'>Primavera (Spring)</option>
                                 {errors.season && (
                             <p className='error'>{errors.season}</p> 
                         )}
                         </select>
                     </div>
                     <div className={s.select}>
-                        <label>Pais:</label>
+                        <label>Pais: </label>
                             <select onChange={(e) => handleSelect(e)}>
                                 {countries.map((country) => (
                                     <option value={country.name}>{country.name}</option>
