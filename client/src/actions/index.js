@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_COUNTRIES, GET_NAME_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_ACTIVITIES, POST_ACTIVITY } from './actionNames'
+import {GET_COUNTRIES, GET_NAME_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_ACTIVITIES, POST_ACTIVITY, GET_DETAIL } from './actionNames'
 
 export function getCountries(){
     return async (dispatch) => {
@@ -64,6 +64,20 @@ export function postActivity(payload) {
         return {
             type: POST_ACTIVITY,
             response
+        }
+    }
+}
+
+export function getCountryDetails (id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get('http://localhost:3001/api/countries/' + id);
+            return dispatch ({
+                type: GET_DETAIL,
+                payload: json.data
+            })
+    } catch (error) {
+        console.log(error)
         }
     }
 }

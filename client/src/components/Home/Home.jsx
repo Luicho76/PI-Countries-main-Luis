@@ -73,17 +73,17 @@ export default function Home(){
             </button>
             <div>
                 <select onChange={e => handleSort(e)}>
-                    <option disabled>Orden Alfabetico</option>
+                    <option value=''>Orden Alfabetico</option>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
                 <select onChange={e => handleSortPop(e)}>
-                    <option disabled>Filtro por Poblacion</option>
+                    <option value="All">Filtro por Poblacion</option>
                     <option value="ascpop">↑ Población Ascendente</option>
                     <option value="descpop">↓ Población Descendente</option>
                 </select>
                 <select onChange={e => handleFilterContinent(e)}>
-                    <option value="All">Continentes</option>
+                    <option value=''>Continentes</option>
                     <option value="Africa">África</option>
                     <option value="Antarctic">Antartida</option>
                     <option value="Americas">América</option>
@@ -92,7 +92,7 @@ export default function Home(){
                     <option value="Oceania">Oceania</option>
                 </select>
                 <select> 
-                <option value = ''>Filtrar por actividad</option> 
+                <option value =''>Filtrar por actividad</option> 
                 </select>
             <Paginado
             countriesPerPage = { countriesPerPage }

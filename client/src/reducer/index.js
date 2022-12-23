@@ -1,9 +1,10 @@
-import { FILTER_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_NAME_COUNTRIES, POST_ACTIVITY, GET_ACTIVITIES } from "../actions/actionNames";
+import { FILTER_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_NAME_COUNTRIES, POST_ACTIVITY, GET_ACTIVITIES, GET_DETAIL } from "../actions/actionNames";
 
 const initialState = {
     countries: [],
     allCountries: [],
     activities: [],
+    detail:[]
 }
 
 function rootReducer(state = initialState, action){
@@ -51,19 +52,19 @@ function rootReducer(state = initialState, action){
         case FILTER_BY_POPULATION:
             const filterPopulation = action.payload === 'ascpop' ?
             state.countries.sort(function(a, b) {
-                if(a.population > b.population) {
+                if(a.population < b.population) {
                     return 1;
                 }
-                if(a.population < b.population) {
+                if(a.population > b.population) {
                     return -1;
                 }
                 return 0;
             }) :
             state.countries.sort(function(a, b) {
-                if(a.population > b.population) {
+                if(a.population < b.population) {
                     return -1;
                 }
-                if(a.population < b.population) {
+                if(a.population > b.population) {
                     return 1;
                 }
                 return 0;
@@ -88,6 +89,12 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 activities: action.payload
+            }
+
+        case GET_DETAIL:
+            return {
+                ...state,
+                detail: action.payload
             }
 
         default:

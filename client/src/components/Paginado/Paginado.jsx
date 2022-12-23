@@ -5,8 +5,12 @@ export default function Paginado ({ countriesPerPage, allCountries, paginated })
     const pageNumbers = [];
     const pageSecToFinish = allCountries - 9;
     pageNumbers.push(1);
+
+    /* for (let i=2; i <= Math.ceil(((allCountries-countriesPerPage)/(countriesPerPage))+1); i++) {
+        pageNumbers.push(i+1);
+    } */
     
-    for (let i=2; i <= Math.ceil(pageSecToFinish/countriesPerPage); i++) {
+    for (let i=2; i <= Math.ceil((pageSecToFinish/countriesPerPage)+1); i++) {
         pageNumbers.push(i);
     }
     return(

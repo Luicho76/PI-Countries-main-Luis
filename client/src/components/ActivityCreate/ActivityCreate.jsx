@@ -118,7 +118,7 @@ export function ActivityCreate(){
                                 <option value='3'>3</option>
                                 <option value='4'>4</option>
                                 <option value='5'>5</option>
-                                {errors.difficulty && (
+                            {errors.difficulty && (
                             <p className='error'>{errors.difficulty}</p>
                         )}
                         </select>
@@ -168,7 +168,7 @@ export function ActivityCreate(){
                 {input.country.map(el => 
                     <div className={s.countryContainer}>
                         <div className={s.country}>{el}</div>
-                        <button className={s.deleteButton} onClick = { () => handleDelete(el)}>X</button>    
+                        <button className={s.deleteButton} onClick = {()=> handleDelete(el)}>X</button>    
                     </div> )}
             </div>
         </div>
