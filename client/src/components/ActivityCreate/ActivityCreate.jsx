@@ -7,16 +7,16 @@ import s from './ActivityCreate.module.css';
 
 function validate(input) {
     let errors = {};
-    if(!input.name || input.name.length < 3 || !input.name.match( (/^[A-Za-z]+$/))) {
+    if(!input.name || input.name.length < 3 || !input.name.match( (/^[A-Za-z]+$/)) || input.name === '') {
         errors.name =  'Se requiere que ingrese un nombre para la actividad';
     } else if (!input.difficulty) {
         errors.difficulty = 'Se requiere que ingrese una dificultad para la actividad';
     } else if (!input.duration) {
-        errors.duration = 'Se requiere que ingrese una duración para la actividad'
+        errors.duration = 'Se requiere que ingrese una duración para la actividad';
     } else if (!input.season) {
         errors.season = 'Se requiere que ingrese una estación para la actividad';
     } else if (!input.country) {
-        errors.country = 'Se requiere que ingrese un pais para la actividad'
+        errors.country = 'Se requiere que ingrese un pais para la actividad';
     }
     return errors;
 }
@@ -24,7 +24,7 @@ function validate(input) {
 export function ActivityCreate(){
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.countries);
-        const [input, setInput] = useState({
+    const [input, setInput] = useState({
         name: '',
         difficulty: '',
         duration: '',
