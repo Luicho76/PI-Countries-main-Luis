@@ -7,7 +7,7 @@ import s from './ActivityCreate.module.css';
 
 function validate(input) {
     let errors = {};
-    if(!input.name || input.name.length < 3 || !input.name.match( (/^[A-Za-z]+$/)) || input.name === '') {
+    if(!input.name || input.name.length < 3 || !input.name.match(/^[A-Za-z]+$/) || input.name === '') {
         errors.name =  'Se requiere que ingrese un nombre para la actividad';
     } else if (!input.difficulty) {
         errors.difficulty = 'Se requiere que ingrese una dificultad para la actividad';
