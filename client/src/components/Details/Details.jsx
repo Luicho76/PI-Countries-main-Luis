@@ -11,7 +11,7 @@ export function Details (props) {
     useEffect(() => {
         console.log(props)
         dispatch(getCountryDetails(props.match.params.id)); //con esto accedo al id 
-    }, [dispatch, props]);
+    }, [dispatch, props, props.match.params.id]);
 
     const myCountry = useSelector ((state) => state.detail)
     console.log(myCountry)
@@ -21,7 +21,7 @@ export function Details (props) {
             {
                 <div>
                     <h1>Pais: {myCountry.name} ({myCountry.id})</h1>
-                    <img src = { myCountry.flags }  alt = 'Flag not found' width = '100px' height = '60px'/>
+                    <img src = { myCountry.flags }  alt = {myCountry.name} width = '100px' height = '60px'/>
                     <h2>Capital: {myCountry.capital}</h2>
                     <h2>Continente: {myCountry.continents}</h2>
                     <h2>Subregión: {myCountry.subregion}</h2>
@@ -30,13 +30,13 @@ export function Details (props) {
                 </div>
                 } 
                     {
-                        myCountry.activity?.map((e) => 
+                        myCountry.activities?.map((activity, index) => 
                             <ActivityCard
-                            name={e.name}
-                            difficulty={e.difficulty}
-                            duration={e.duration}
-                            season={e.season}
-                            key={e.key}
+                            name={activity.name}
+                            difficulty={activity.difficulty}
+                            duration={activity.duration}
+                            season={activity.season}
+                            key={index}
                         />)
                     }
                     <Link to = '/home'> 

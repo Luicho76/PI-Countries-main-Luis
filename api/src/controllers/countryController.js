@@ -21,10 +21,10 @@ async function getAllCountries(){
     }
 }
 
-function getAllCountriesFromDb(req,res){
+/* function getAllCountriesFromDb(req,res){
     Country.findAll()
     .then(countries => res.send(countries))
     .catch(error => (error))
-}
+} */
 
-module.exports = { getAllCountries, getAllCountriesFromDb };
+module.exports = { getAllCountries };

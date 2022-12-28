@@ -1,7 +1,6 @@
 //route/countryRoute.js
 const { Router } = require("express");
-const { getAllCountriesFromDb } = require('../controllers/index')
-const axios = require("axios");
+const { getAllCountries } = require('../controllers/countryController')
 const { Op } = require('sequelize');
 const { Country, Activity } = require("../db");
 const router = Router();
@@ -10,7 +9,7 @@ const router = Router();
 router.get('/', async (req, res, next) => {
   try {
     const name = req.query.name
-    let countriesTotal = await getAllCountriesFromDb()
+    let countriesTotal = await getAllCountries()
     if(name) {
       countriesTotal = { 
         where: {

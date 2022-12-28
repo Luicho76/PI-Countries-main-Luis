@@ -49,7 +49,7 @@ export function filterByPopulation(payload) {
 
 export function getActivities() {
     return async function (dispatch) {
-        var info = await axios.get('http://localhost:3001/api/activities')
+        const info = await axios.get('http://localhost:3001/api/activities')
         return dispatch({
             type: GET_ACTIVITIES,
             payload: info.data

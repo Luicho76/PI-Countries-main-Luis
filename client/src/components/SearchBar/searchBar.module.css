@@ -1,0 +1,11 @@
+.nav{
+    width: 16%;
+    justify-content: space-around;
+    margin: 20px auto 0;
+    font-size: 12px;
+    font-weight: 50;
+    border: 1px solid aqua;
+    background-color: rgb(122, 116, 116);
+    border-radius: 10px;
+    color: aqua;
+}

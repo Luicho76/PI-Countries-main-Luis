@@ -15,9 +15,9 @@ function validate(input) {
         errors.duration = 'Se requiere que ingrese una duración para la actividad';
     } else if (!input.season) {
         errors.season = 'Se requiere que ingrese una estación para la actividad';
-    } else if (!input.country) {
+    } else if (!input.countryId) {
         errors.country = 'Se requiere que ingrese un pais para la actividad';
-    }
+    } 
     return errors;
 }
 
@@ -29,7 +29,7 @@ export function ActivityCreate(){
         difficulty: '',
         duration: '',
         season: '',
-        country: []
+        countryId: []
     })
     const history = useHistory();
     const[errors, setErrors] = useState({})
@@ -56,7 +56,7 @@ export function ActivityCreate(){
     function handleSelect(e) {// cuando mando el country, traigo lo que ya habia en el estado y le concateno el target value
         setInput({
             ...input,
-            country: [...input.country, e.target.value]
+            countryId: [...input.countryId, e.target.value]
         })
     }
 
@@ -71,7 +71,7 @@ export function ActivityCreate(){
         difficulty: '',
         duration: '',
         season: '',
-        country: []
+        countryId: []
         })
         history.push('/home');//metodo del router que me redirecciona a la ruta que decida
     }
@@ -80,11 +80,11 @@ export function ActivityCreate(){
     function handleDelete(el) {
         setInput({
             ...input,
-            country: input.country.filter( country => country !==el) // me devuelve el estado nuevo, que es un array, sin el elemento que clickee
+            countryId: input.countryId.filter( country => country !==el) // me devuelve el estado nuevo, que es un array, sin el elemento que clickee
         })
     }
 
-
+console.log(input.countryId)
     return (
         <div className={s.container}>
             <Link to= '/home'><button className={s.backButton}>Volver</button></Link>
@@ -158,15 +158,15 @@ export function ActivityCreate(){
                         <label>Pais: </label>
                             <select onChange={(e) => handleSelect(e)}>
                                 {countries.map((country) => (
-                                    <option value={country.name}>{country.name}</option>
+                                    <option value={country.id} key={country.id}>{country.name}</option>
                                 ))}
                             </select>
                     </div>
                     <br/>
                         <button className={s.submitButton} type='submit'>Crear actividad</button>
                 </form>
-                {input.country.map(el => 
-                    <div className={s.countryContainer}>
+                {input.countryId.map(el => 
+                    <div className={s.countryContainer} key={el.id}>
                         <div className={s.country}>{el}</div>
                         <button className={s.deleteButton} onClick = {()=> handleDelete(el)}>X</button>    
                     </div> )}

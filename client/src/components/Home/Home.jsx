@@ -6,6 +6,7 @@ import {getCountries, filterByContinent, orderByName, filterByPopulation} from '
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar';
+import s from './home.module.css';
 
 
 export default function Home(){
@@ -64,14 +65,17 @@ export default function Home(){
 
 
     return (
-        <div>
+        <div className={s.body}>
             <h1>PAISES</h1>
-            <Link to='/activity'>Crear Actividad</Link>
+            <Link to='/activity' className={s.crearAct}>Crear Actividad</Link>
             <br/>
-            <button onClick={e => {handleClick(e)}}>
-                Recargar paises
+            <br/>
+            <button onClick={e => {handleClick(e)}} className={s.recPaises}>
+                Recargar Paises
             </button>
-            <div>
+            <br/>
+            <br/>
+            <div className={s.filters}>
                 <select onChange={e => handleSort(e)}>
                     <option value=''>Orden Alfabetico</option>
                     <option value='asc'>Ascendente</option>
@@ -105,7 +109,7 @@ export default function Home(){
             {
                 currentCountries?.map(c => {
                     return(
-                        <div>
+                        <div className={s.ordenarPaises}>
                             <Link to={"/home/" + c.id}>
                                 <Card key = { c.id } name={c.name} flags={c.flags} continents={c.continents}/>
                             </Link>

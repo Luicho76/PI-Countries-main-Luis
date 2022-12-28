@@ -102,4 +102,5 @@ function rootReducer(state = initialState, action){
     }
 }
 
+//state.countries.filter((c)=>{ return c.activities.some((a)=> a.name === action.payload)
 export default rootReducer; 
