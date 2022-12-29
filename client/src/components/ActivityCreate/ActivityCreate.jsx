@@ -84,7 +84,7 @@ export function ActivityCreate(){
         })
     }
 
-console.log(input.countryId)
+//console.log(input.countryId)
     return (
         <div className={s.container}>
             <Link to= '/home'><button className={s.backButton}>Volver</button></Link>
@@ -158,7 +158,7 @@ console.log(input.countryId)
                         <label>Pais: </label>
                             <select onChange={(e) => handleSelect(e)}>
                                 {countries.map((country) => (
-                                    <option value={country.id} key={country.id}>{country.name}</option>
+                                    <option value={country.id} key={country.id}>{country.name}</option> //value={country.id} key={country.id}
                                 ))}
                             </select>
                     </div>
@@ -166,7 +166,7 @@ console.log(input.countryId)
                         <button className={s.submitButton} type='submit'>Crear actividad</button>
                 </form>
                 {input.countryId.map(el => 
-                    <div className={s.countryContainer} key={el.id}>
+                    <div className={s.countryContainer} key={el.name}>
                         <div className={s.country}>{el}</div>
                         <button className={s.deleteButton} onClick = {()=> handleDelete(el)}>X</button>    
                     </div> )}

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountryDetails } from "../../actions";
-import ActivityCard from "../ActivityCreate/ActivityCard";
+import ActivityCard from "../ActivityCard/ActivityCard";
 
 export function Details (props) {
     console.log(props) 
