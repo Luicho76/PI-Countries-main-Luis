@@ -1,0 +1,12 @@
+.h4{
+    display:inline-block;
+    border-width: 6px;
+    font-size: 15px;
+    margin: 7px;
+    border-radius: 10px;
+    box-shadow: rgb(66, 124, 185) 0px 20px 30px -10px;
+    background-color: rgba(0, 0, 0, 0.377);
+    width: 100px;
+    height: 45px;
+    color:rgb(253, 250, 250)
+}

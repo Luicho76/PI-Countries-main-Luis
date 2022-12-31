@@ -1,9 +1,10 @@
-import { FILTER_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_NAME_COUNTRIES, POST_ACTIVITY, GET_ACTIVITIES, GET_DETAIL } from "../actions/actionNames";
+import { GET_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_NAME_COUNTRIES, POST_ACTIVITY, GET_ACTIVITIES, GET_DETAIL, FILTER_BY_ACTIVITY } from "../actions/actionNames";
 
 const initialState = {
     countries: [],
     allCountries: [],
     activities: [],
+    allActivities: [],
     detail:[]
 }
 
@@ -13,15 +14,16 @@ function rootReducer(state = initialState, action){
             return {
                 ...state, 
                 countries: action.payload,
-                allCountries: action.payload
+                allCountries: action.payload,
+                allActivities: action.payload,
             }
 
         case FILTER_CONTINENT:
             const allCountries = state.allCountries;
-            const statusFiltered = action.payload === 'All' ? allCountries : allCountries.filter(el => el.continents === action.payload)
+            const continentFiltered = action.payload === 'All' ? allCountries : allCountries.filter(el => el.continents === action.payload)
             return{
                 ...state,
-                countries: statusFiltered,
+                countries: continentFiltered,
             }
 
         case ORDER_BY_NAME:
@@ -97,10 +99,17 @@ function rootReducer(state = initialState, action){
                 detail: action.payload
             }
 
+        case FILTER_BY_ACTIVITY:
+            const activityFiltered = state.allCountries.filter(el => el.activities.some((a)=> a.name === action.payload))
+            return {
+                ...state,
+                countries: activityFiltered
+            }
+
         default:
             return state;
     }
 }
 
-//state.countries.filter((c)=>{ return c.activities.some((a)=> a.name === action.payload)
+
 export default rootReducer; 

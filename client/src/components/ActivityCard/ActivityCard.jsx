@@ -1,9 +1,10 @@
 import React from 'react';
+import s from './activityCard.module.css'
 
 
 const ActivityCard = (activity) => {
     return (
-        <div> 
+        <div className={s.cardAct}> 
             {activity && (
                 <div>
                     <p><b>Actividad: </b>{activity.name}</p>

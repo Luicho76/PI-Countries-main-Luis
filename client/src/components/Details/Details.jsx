@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountryDetails } from "../../actions";
 import ActivityCard from "../ActivityCard/ActivityCard";
+import s from './details.module.css';
 
 export function Details (props) {
     console.log(props) 
@@ -19,14 +20,20 @@ export function Details (props) {
     return (
         <div>
             {
-                <div>
-                    <h1>Pais: {myCountry.name} ({myCountry.id})</h1>
+                <div >
+                    <h1 className={s.title}>Pais: {myCountry.name} ({myCountry.id})</h1>
                     <img src = { myCountry.flags }  alt = {myCountry.name} width = '100px' height = '60px'/>
-                    <h2>Capital: {myCountry.capital}</h2>
-                    <h2>Continente: {myCountry.continents}</h2>
-                    <h2>Subregión: {myCountry.subregion}</h2>
-                    <h2>Población: {myCountry.population} habitantes</h2>
-                    <h2>Área: {myCountry.area} km2</h2>
+                    <br/>
+                    <h2 className={s.capital}>Capital: {myCountry.capital}</h2>
+                    <br/>
+                    <h2 className={s.continent}>Continente: {myCountry.continents}</h2>
+                    <br/>
+                    <h2 className={s.subregion}>Subregión: {myCountry.subregion}</h2>
+                    <br/>
+                    <h2 className={s.poblation}>Población: {myCountry.population} habitantes</h2>
+                    <br/>
+                    <h2 className={s.area}>Área: {myCountry.area} km2</h2>
+                    <br/>
                 </div>
                 } 
                     {
@@ -39,8 +46,9 @@ export function Details (props) {
                             key={index}
                         />)
                     }
+                    <br/>
                     <Link to = '/home'> 
-                        <button>Volver</button>
+                        <button className={s.button}>Volver</button>
                     </Link>
                 </div>
     

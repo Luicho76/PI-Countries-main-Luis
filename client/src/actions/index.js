@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_COUNTRIES, GET_NAME_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_ACTIVITIES, POST_ACTIVITY, GET_DETAIL } from './actionNames'
+import {GET_COUNTRIES, GET_NAME_COUNTRIES, FILTER_CONTINENT, ORDER_BY_NAME, FILTER_BY_POPULATION, GET_ACTIVITIES, POST_ACTIVITY, GET_DETAIL, FILTER_BY_ACTIVITY} from './actionNames'
 
 export function getCountries(){
     return async (dispatch) => {
@@ -79,5 +79,12 @@ export function getCountryDetails (id) {
     } catch (error) {
         console.log(error)
         }
+    }
+}
+
+export function filterByActivity (payload) {
+    return {
+        type: FILTER_BY_ACTIVITY,
+        payload
     }
 }

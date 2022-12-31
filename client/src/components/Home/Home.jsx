@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {getCountries, filterByContinent, orderByName, filterByPopulation} from '../../actions/index';
+import {getCountries, filterByContinent, orderByName, filterByPopulation, filterByActivity, getActivities} from '../../actions/index';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar';
@@ -13,6 +13,7 @@ export default function Home(){
 
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
+    const allActivities = useSelector((state) => state.activities);
     // eslint-disable-next-line no-unused-vars
     const [orden, setOrden] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +40,10 @@ export default function Home(){
 
     useEffect (() => {
         dispatch(getCountries());
+        //dispatch(filterByActivity());
+        dispatch(getActivities());
     }, [dispatch]);
+    
 
     function handleClick(e){
         e.preventDefault();
@@ -63,6 +67,11 @@ export default function Home(){
         setOrden(`Ordenado ${e.target.value}`) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
     };
 
+    function handleFilterByActivities (e) {
+        e.preventDefault();
+        dispatch(filterByActivity(e.target.value));
+        setOrden(e.target.value)
+    };
 
     return (
         <div className={s.body}>
@@ -82,12 +91,12 @@ export default function Home(){
                     <option value='desc'>Descendente</option>
                 </select>
                 <select onChange={e => handleSortPop(e)}>
-                    <option value="All">Filtro por Poblacion</option>
+                    <option value="All">Filtro por Población</option>
                     <option value="ascpop">↑ Población Ascendente</option>
                     <option value="descpop">↓ Población Descendente</option>
                 </select>
                 <select onChange={e => handleFilterContinent(e)}>
-                    <option value=''>Continentes</option>
+                    <option value=''>Clasificación por Continentes</option>
                     <option value="Africa">África</option>
                     <option value="Antarctic">Antartida</option>
                     <option value="Americas">América</option>
@@ -95,8 +104,11 @@ export default function Home(){
                     <option value="Europe">Europa</option>
                     <option value="Oceania">Oceania</option>
                 </select>
-                <select> 
-                <option value =''>Filtrar por actividad</option> 
+                <select onChange={(e) => handleFilterByActivities(e)} defaultValue='Filter By Activity'>
+                    <option value='All'>Filtro por Actividad</option>
+                    {allActivities.map(e => (
+                        <option value={e.name} key={e.name}>{e.name}</option>
+                    ))}
                 </select>
             <Paginado
             countriesPerPage = { countriesPerPage }
