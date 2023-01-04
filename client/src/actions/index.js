@@ -60,7 +60,7 @@ export function getActivities() {
 export function postActivity(payload) {
     return async function (dispatch) {
         const response = await axios.post('http://localhost:3001/api/activities', payload)
-        console.log(response)
+        //console.log(response)
         return {
             type: POST_ACTIVITY,
             response

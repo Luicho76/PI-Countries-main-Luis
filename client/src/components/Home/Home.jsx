@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -40,7 +39,6 @@ export default function Home(){
 
     useEffect (() => {
         dispatch(getCountries());
-        //dispatch(filterByActivity());
         dispatch(getActivities());
     }, [dispatch]);
     

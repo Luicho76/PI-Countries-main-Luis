@@ -49,7 +49,7 @@ export function ActivityCreate(){
             ...input,
             [e.target.name]: e.target.value
         }));
-        console.log(input);
+        //console.log(input);
     }
 
 
@@ -60,20 +60,24 @@ export function ActivityCreate(){
         })
     }
 
-
+    //let expReg = /^\b[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s0-9]+$/;
     function handleSubmit(e) {                
         e.preventDefault();
-        console.log(input);
-        dispatch(postActivity(input));
-        alert('Actividad creada con éxito');
-        setInput({
-        name: '',
-        difficulty: '',
-        duration: '',
-        season: '',
-        countryId: []
-        })
-        history.push('/home');//metodo del router que me redirecciona a la ruta que decida
+        //console.log(input);
+        if(!input.name || !input.difficulty || !input.duration || !input.season || !input.countryId){
+            return alert('Debe ingresar los datos necesarios en todos los campos requeridos');
+        } else { 
+            dispatch(postActivity(input));
+            alert('Actividad creada con éxito');
+            setInput({
+            name: '',
+            difficulty: '',
+            duration: '',
+            season: '',
+            countryId: []
+            })
+            history.push('/home');//metodo del router que me redirecciona a la ruta que decida
+        } 
     }
 
 
