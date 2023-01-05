@@ -30,13 +30,9 @@ const newActivity = async function (name, difficulty, duration, season, countryI
       season: season,
     });
     //agrego la actividad al pais
-    // const NewActivityAdd = 
     await newActiv.addCountries(countryMatch);
-    // return NewActivityAdd ???;
     return `Nueva actividad ${name} fué creada y agregada con éxito`
   } else {
-    // console.log(countrymatch)
-    // const ActivityAdd = 
     await searchActivity.addCountries(countryMatch);
     // return ActivityAdd;
     return `Actividad ${name} agregada con éxito`

@@ -6,7 +6,6 @@ import s from './searchBar.module.css'
 export default function SearchBar() {
     const dispatch = useDispatch();
     const[name, setName] = useState('');
-    //tengo que guardar en mi estado local, lo que vaya apareciendo en el input 
     function handleInputChange(e) {
         e.preventDefault();
         setName(e.target.value);
@@ -15,7 +14,11 @@ export default function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(getNameCountries(name)); //en el estado local name voy a ir guardando lo que vaya tipeando el usuario
+        if(getNameCountries(!name)){
+            return alert('El pais buscado no existe');
+        } else {
+            dispatch(getNameCountries(name)); 
+        }
         setName('');
     }
 

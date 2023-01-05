@@ -60,7 +60,7 @@ export function ActivityCreate(){
         })
     }
 
-    //let expReg = /^\b[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s0-9]+$/;
+    
     function handleSubmit(e) {                
         e.preventDefault();
         //console.log(input);
@@ -76,7 +76,7 @@ export function ActivityCreate(){
             season: '',
             countryId: []
             })
-            history.push('/home');//metodo del router que me redirecciona a la ruta que decida
+            history.push('/home');
         } 
     }
 

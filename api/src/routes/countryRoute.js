@@ -34,22 +34,22 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     let id = req.params.id;
-      let searchId = await Country.findOne({
-        where: {
-          id: id.toUpperCase(),
-        },
-        include:{
-          model: Activity,
-          attributes: ['id','name','difficulty','duration','season'],
-          through: { attributes: [] },
-        }
-      })
-        
-      if(!searchId) {
-        res.status(404).send(`'${id}' not found`)
-      } else {
-        res.json(searchId)
+    let searchId = await Country.findOne({
+      where: {
+        id: id.toUpperCase(),
+      },
+      include:{
+        model: Activity,
+        attributes: ['id','name','difficulty','duration','season'],
+        through: { attributes: [] },
       }
+    })
+        
+    if(!searchId) {
+      res.status(404).send(`'${id}' not found`)
+    } else {
+      res.json(searchId)
+    }
   } catch (error) {
     next(error)
   }
