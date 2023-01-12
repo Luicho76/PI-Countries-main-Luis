@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store/index'
+
+axios.defaults.baseURL = 'http://localhost:3001';
+//axios.defaults.baseURL = 'backendcountries-production.up.railway.app';
 
 ReactDOM.render(
   <Provider store={store}>
