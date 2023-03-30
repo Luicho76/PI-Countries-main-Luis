@@ -104,7 +104,7 @@ export default function Home(){
                 </select>
                 <select onChange={(e) => handleFilterByActivities(e)} defaultValue='Filter By Activity'>
                     <option value='All'>Filtro por Actividad</option>
-                    {allActivities.map(e => (
+                    {allActivities && Array.isArray(allActivities) && allActivities.map(e => (
                         <option value={e.name} key={e.name}>{e.name}</option>
                     ))}
                 </select>

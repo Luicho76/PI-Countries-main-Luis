@@ -7,8 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store/index'
 
-//axios.defaults.baseURL = 'http://localhost:3001';
-axios.defaults.baseURL = 'backend-countries-lc9qt2945-luicho76.vercel.app';
+axios.defaults.baseURL = 'http://localhost:3001';
+//axios.defaults.baseURL = 'backend-countries-lc9qt2945-luicho76.vercel.app';
 
 ReactDOM.render(
   <Provider store={store}>
