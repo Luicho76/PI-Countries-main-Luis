@@ -27,6 +27,6 @@ const port = process.env.PORT || 3001;
 conn.sync({ force: false }).then(() => {
   server.listen(port, async () => {
     console.log(`%s listening at port ${port}`); // eslint-disable-line no-console
-    //await getAllCountries()
+    await getAllCountries()
   });
 });
